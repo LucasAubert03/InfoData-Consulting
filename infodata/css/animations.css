@@ -1,0 +1,93 @@
+/* ============================================================
+   InfoData — animations.css  |  Minimal, elegant
+   ============================================================ */
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes line-grow {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Barra de progreso de scroll */
+@keyframes none {}
+
+/* ── Hero entrance ───────────────────────────────────────────── */
+.h-1 { animation: fade-up 1.1s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
+.h-2 { animation: fade-up 1.1s cubic-bezier(0.16,1,0.3,1) 0.22s both; }
+.h-3 { animation: fade-up 1.1s cubic-bezier(0.16,1,0.3,1) 0.34s both; }
+.h-4 { animation: fade-up 0.9s cubic-bezier(0.16,1,0.3,1) 0.5s both; }
+.h-5 { animation: fade-up 0.9s cubic-bezier(0.16,1,0.3,1) 0.62s both; }
+.h-6 { animation: fade-in  0.8s ease 0.9s both; }
+
+/* Línea que crece */
+.line-grow {
+  display: block;
+  height: 1px;
+  width: 0;
+  background: var(--border, rgba(12,23,40,0.14));
+  animation: line-grow 1.4s cubic-bezier(0.16,1,0.3,1) 0.3s both;
+}
+
+.line-grow-cream {
+  background: var(--border-dark, rgba(244,239,231,0.14));
+}
+
+/* ── Marquee ─────────────────────────────────────────────────── */
+.marquee-track { overflow: hidden; width: 100%; }
+.marquee-inner {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 50s linear infinite;
+}
+.marquee-track:hover .marquee-inner { animation-play-state: paused; }
+
+/* ── Row flip (servicios) ─────────────────────────────────────── */
+.row-flip {
+  background: transparent;
+  transition:
+    background 0.45s cubic-bezier(0.4,0,0.2,1),
+    border-color 0.45s ease;
+  cursor: default;
+}
+
+/* Las clases de texto hijas deben tener su propia transition */
+.row-flip-text   { transition: color 0.4s ease; }
+.row-flip-num    { transition: color 0.4s ease; }
+.row-flip-label  { transition: color 0.4s ease, opacity 0.4s ease; }
+.row-flip-arrow  { transition: color 0.4s ease, transform 0.4s ease; }
+
+/* Estado hover — sobre fondo claro */
+.row-flip:hover                   { background: var(--ink); border-color: var(--ink) !important; }
+.row-flip:hover .row-flip-text    { color: var(--cream); }
+.row-flip:hover .row-flip-num     { color: var(--cream-35); }
+.row-flip:hover .row-flip-label   { color: var(--cream-65); opacity: 1; }
+.row-flip:hover .row-flip-arrow   { color: var(--cream); transform: translateX(6px); }
+
+/* ── Hover link subrayado ────────────────────────────────────── */
+.ul-hover {
+  position: relative;
+  display: inline-block;
+}
+.ul-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0;
+  width: 0; height: 1px;
+  background: currentColor;
+  transition: width 0.32s cubic-bezier(0.16,1,0.3,1);
+}
+.ul-hover:hover::after { width: 100%; }

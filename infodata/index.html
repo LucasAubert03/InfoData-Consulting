@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="InfoData — Soluciones digitales para micro, pequeñas y medianas empresas. Presencia web, inteligencia artificial y automatización de procesos en América Latina." />
+  <meta property="og:title" content="InfoData — Tecnología con carácter" />
+  <meta property="og:description" content="Presencia digital, asistentes con IA y automatización para empresas latinoamericanas que quieren crecer." />
+  <meta property="og:type" content="website" />
+  <title>InfoData — Tecnología con carácter</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='5' fill='%230C1A0D'/><text y='23' x='7' font-family='Georgia,serif' font-size='20' font-style='italic' font-weight='600' fill='%23EAF0E9'>i</text></svg>" />
+</head>
+<body>
+
+<!-- Barra de progreso de scroll -->
+<div id="scroll-progress" aria-hidden="true"></div>
+
+
+<!-- ══════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════ -->
+<header id="navbar" class="navbar" role="banner">
+  <div class="container">
+    <nav class="navbar-inner" aria-label="Navegación principal">
+
+      <a href="#inicio" class="navbar-logo" aria-label="InfoData — Inicio">
+        Info<em>Data</em>
+      </a>
+
+      <ul class="navbar-nav" role="list">
+        <li><a href="#servicios" class="nav-link ul-hover" id="nav-servicios">Servicios</a></li>
+        <li><a href="#nosotros"  class="nav-link ul-hover" id="nav-nosotros">Nosotros</a></li>
+        <li><a href="#precios"   class="nav-link ul-hover" id="nav-precios">Planes</a></li>
+        <li><a href="#contacto"  class="nav-link ul-hover" id="nav-contacto">Contacto</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-menu" role="navigation" aria-label="Menú móvil">
+      <a href="#servicios" class="nav-link" id="mob-servicios">Servicios</a>
+      <a href="#nosotros"  class="nav-link" id="mob-nosotros">Nosotros</a>
+      <a href="#precios"   class="nav-link" id="mob-precios">Planes</a>
+      <a href="#contacto"  class="nav-link" id="mob-contacto">Contacto</a>
+      <a href="#contacto"  class="btn btn-dark" id="mob-cta">Consulta gratuita</a>
+    </div>
+  </div>
+</header>
+
+
+<!-- ══════════════════════════════════════
+     HERO — tipografía que llena el viewport
+══════════════════════════════════════ -->
+<section id="inicio" class="hero" aria-label="Inicio">
+  <div class="container">
+    <div class="hero-body">
+
+      <!-- Eyebrow -->
+      <p class="hero-eyebrow h-1" aria-hidden="true">
+        <span class="hero-eyebrow-dot"></span>
+        InfoData · América Latina · <span class="js-year">2025</span>
+      </p>
+
+      <!-- Titular principal — ENORME -->
+      <div class="hero-headline" aria-label="Tecnología con carácter, para empresas que crecen.">
+        <span class="headline-word h-1">Tecnología</span>
+        <span class="headline-word-serif h-2">con carácter,</span>
+        <span class="headline-word h-3">para empresas</span>
+        <span class="headline-word h-3">que crecen.</span>
+      </div>
+
+      <!-- Línea divisoria -->
+      <div class="hero-divider line-grow h-4" aria-hidden="true"></div>
+
+      <!-- Descripción + CTA -->
+      <div class="hero-bottom">
+        <p class="hero-desc h-4">
+          Potenciamos micro, pequeñas y medianas empresas con
+          <strong>presencia digital de alto impacto</strong>,
+          <strong>atención automatizada con inteligencia artificial</strong>
+          y flujos de trabajo que liberan tiempo real para tu equipo.
+        </p>
+        <div class="hero-actions h-5">
+          <a href="#contacto" class="btn btn-dark" id="hero-cta-primary">
+            Consulta gratuita
+          </a>
+          <a href="#servicios" class="btn btn-outline-dark" id="hero-cta-secondary">
+            Ver servicios
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Stats -->
+    <div class="hero-stats h-6" aria-label="InfoData en números">
+      <div class="hero-stat">
+        <div class="stat-n"><span data-target="50" data-suffix="+">50+</span></div>
+        <div class="stat-d">Clientes activos</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-n"><span data-target="120" data-suffix="+">120+</span></div>
+        <div class="stat-d">Proyectos entregados</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-n"><span data-target="98" data-suffix="%">98%</span></div>
+        <div class="stat-d">Satisfacción</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-n"><span data-target="5" data-suffix="">5</span></div>
+        <div class="stat-d">Países · América Latina</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator h-6" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     MANIFESTO — sección oscura de contraste
+══════════════════════════════════════ -->
+<section class="manifesto" aria-label="Nuestra filosofía">
+  <div class="container">
+    <div class="manifesto-inner">
+
+      <div class="manifesto-header">
+        <h2 class="manifesto-statement reveal">
+          Las empresas pequeñas merecen
+          <em>grandes</em> herramientas.
+        </h2>
+        <p class="section-label section-label-light reveal d2">Nuestra convicción</p>
+      </div>
+
+      <div class="manifesto-body">
+
+        <p class="manifesto-text reveal d1">
+          Durante años, las herramientas digitales más poderosas estuvieron reservadas para corporaciones con grandes presupuestos.
+          InfoData existe para cambiar eso. Trabajamos exclusivamente con MIPYMES porque creemos que el tamaño de una empresa
+          no debería determinar la calidad de su tecnología.
+        </p>
+
+        <div class="manifesto-pills reveal d2">
+          <div class="manifesto-pill">
+            <span class="pill-label">Presencia digital</span>
+            <span class="pill-num">01</span>
+          </div>
+          <div class="manifesto-pill">
+            <span class="pill-label">Inteligencia artificial</span>
+            <span class="pill-num">02</span>
+          </div>
+          <div class="manifesto-pill">
+            <span class="pill-label">Automatización</span>
+            <span class="pill-num">03</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SERVICES — lista editorial con flip
+══════════════════════════════════════ -->
+<section id="servicios" class="services" aria-label="Nuestros servicios">
+  <div class="container">
+
+    <div class="services-header">
+      <div class="reveal">
+        <p class="section-label" style="margin-bottom:1.5rem;">Servicios</p>
+        <h2 style="font-size:clamp(2rem,4.5vw,4.5rem);font-weight:700;letter-spacing:-0.04em;line-height:1.04;color:var(--ink);">
+          Tres formas<br>
+          <em style="font-family:var(--font-serif);font-style:italic;font-weight:600;color:var(--green);">de escalar</em><br>
+          tu empresa.
+        </h2>
+      </div>
+      <div class="services-header-right reveal d2">
+        <p>
+          Cada servicio está diseñado para generar resultados medibles y puede
+          implementarse de forma independiente o en conjunto, según la etapa de tu negocio.
+        </p>
+      </div>
+    </div>
+
+    <!-- Lista de servicios -->
+    <div class="services-list" aria-label="Lista de servicios">
+
+      <article class="service-row row-flip reveal" aria-label="Presencia digital">
+        <span class="service-row-bg-num" aria-hidden="true">01</span>
+        <span class="service-row-num row-flip-num">01</span>
+        <h3 class="service-row-name row-flip-text">Presencia digital</h3>
+        <p class="service-row-desc row-flip-label">
+          Sitios web que convierten visitas en clientes. Diseño cuidado, rendimiento técnico impecable y posicionamiento integrado desde el primer día.
+        </p>
+        <a href="#contacto" class="service-row-arrow row-flip-arrow" id="svc-web-link" aria-label="Consultar sobre presencia digital">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+      <article class="service-row row-flip reveal d1" aria-label="Inteligencia artificial">
+        <span class="service-row-bg-num" aria-hidden="true">02</span>
+        <span class="service-row-num row-flip-num">02</span>
+        <h3 class="service-row-name row-flip-text">Inteligencia artificial</h3>
+        <p class="service-row-desc row-flip-label">
+          Asistentes virtuales que atienden a tus clientes las 24 horas, responden consultas, generan leads y aprenden con cada interacción. Integrados en cualquier canal.
+        </p>
+        <a href="#contacto" class="service-row-arrow row-flip-arrow" id="svc-ai-link" aria-label="Consultar sobre inteligencia artificial">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+      <article class="service-row row-flip reveal d2" aria-label="Automatización">
+        <span class="service-row-bg-num" aria-hidden="true">03</span>
+        <span class="service-row-num row-flip-num">03</span>
+        <h3 class="service-row-name row-flip-text">Automatización</h3>
+        <p class="service-row-desc row-flip-label">
+          Eliminamos las tareas repetitivas de tu operación. Tu equipo recupera tiempo, tu empresa reduce errores y los resultados llegan desde el primer mes.
+        </p>
+        <a href="#contacto" class="service-row-arrow row-flip-arrow" id="svc-auto-link" aria-label="Consultar sobre automatización">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     MARQUEE STRIP
+══════════════════════════════════════ -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-inner">
+      <span class="marquee-item">Diseño web<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Asistentes con IA<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Automatización<span class="marquee-sep"></span></span>
+      <span class="marquee-item">MIPYMES<span class="marquee-sep"></span></span>
+      <span class="marquee-item">América Latina<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Transformación digital<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Resultados medibles<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Presencia digital<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Atención 24/7<span class="marquee-sep"></span></span>
+      <span class="marquee-item">Estrategia digital<span class="marquee-sep"></span></span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     WHY INFODATA
+══════════════════════════════════════ -->
+<section id="nosotros" class="why" aria-label="Por qué InfoData">
+  <div class="container">
+
+    <div class="why-top">
+      <p class="section-label reveal" style="margin-bottom:1.5rem;">Nosotros</p>
+      <h2 class="why-claim reveal d1">
+        No solo entregamos proyectos. Acompañamos el
+        <em>crecimiento</em> de cada empresa.
+      </h2>
+    </div>
+
+    <div class="why-divider reveal-clip" aria-hidden="true"></div>
+
+    <div class="why-bottom">
+
+      <div>
+        <p class="why-text reveal">
+          Entendemos la realidad de las MIPYMES en América Latina: presupuestos acotados, equipos pequeños y la presión de competir con empresas más grandes. Por eso construimos soluciones que funcionan desde el primer día — sin complejidad innecesaria, con resultados que puedes ver y medir.
+          <br><br>
+          Cada cliente recibe la misma dedicación que daríamos a una empresa del Fortune 500. Porque creemos que el tamaño de un negocio no debería limitar la calidad de sus herramientas digitales.
+        </p>
+
+        <!-- Métricas -->
+        <div class="why-metrics reveal d2" aria-label="Métricas clave">
+          <div class="metric-cell">
+            <div class="metric-num"><span data-target="40" data-suffix="h">40h</span><span class="accent">/mes</span></div>
+            <p class="metric-label">Ahorro promedio con automatización</p>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-num"><span data-target="3" data-suffix="x">3x</span></div>
+            <p class="metric-label">Más consultas con asistente IA</p>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-num"><span data-target="30" data-suffix="">30</span></div>
+            <p class="metric-label">Días para primeros resultados</p>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-num"><span data-target="98" data-suffix="%">98%</span></div>
+            <p class="metric-label">Clientes que renuevan</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lista de razones -->
+      <div class="why-items" aria-label="Razones para elegir InfoData">
+
+        <div class="why-item reveal">
+          <span class="why-item-num">01</span>
+          <div class="why-item-content">
+            <h4>Sin intermediarios</h4>
+            <p>Tu proyecto lo maneja nuestro equipo directo. Nunca subcontratamos, siempre tenés acceso a quien tomó las decisiones de tu proyecto.</p>
+          </div>
+        </div>
+
+        <div class="why-item reveal d1">
+          <span class="why-item-num">02</span>
+          <div class="why-item-content">
+            <h4>Entrega en semanas, no meses</h4>
+            <p>Metodología ágil orientada a resultados. En 30 días ya tenés algo funcionando que puedes mostrar.</p>
+          </div>
+        </div>
+
+        <div class="why-item reveal d2">
+          <span class="why-item-num">03</span>
+          <div class="why-item-content">
+            <h4>Comprometidos con tus objetivos</h4>
+            <p>No cobramos por horas. Nos alineamos con los resultados que necesitás. Si algo no funciona, lo ajustamos sin costo adicional.</p>
+          </div>
+        </div>
+
+        <div class="why-item reveal d3">
+          <span class="why-item-num">04</span>
+          <div class="why-item-content">
+            <h4>Conocemos el mercado regional</h4>
+            <p>Trabajamos exclusivamente en América Latina. Conocemos el contexto, las plataformas y los hábitos de compra de la región.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     PRICING — grid limpio sin decoración
+══════════════════════════════════════ -->
+<section id="precios" class="pricing" aria-label="Planes y precios">
+  <div class="container">
+
+    <div class="pricing-header">
+      <p class="section-label reveal" style="margin-bottom:1.25rem;">Planes</p>
+      <h2 class="pricing-headline reveal d1">
+        Inversión clara,<br>
+        <em>sin sorpresas.</em>
+      </h2>
+      <p class="pricing-sub reveal d2">
+        * Valores orientativos. Cada propuesta se adapta a tu empresa y objetivos.
+      </p>
+    </div>
+
+    <div class="plans-grid reveal d2" aria-label="Planes disponibles">
+
+      <!-- Plan 01 -->
+      <article class="plan" aria-label="Plan Esencial">
+        <div class="plan-tier">
+          <span class="plan-tier-dot" aria-hidden="true"></span>
+          Esencial
+        </div>
+        <h3>Presencia Digital</h3>
+        <p class="plan-desc">Para empresas que dan sus primeros pasos digitales y necesitan una base profesional sólida.</p>
+        <div class="plan-price">
+          <span class="plan-from">Desde</span>
+          <div class="plan-amount">
+            <span class="plan-currency">$</span>
+            <span class="plan-num">299</span>
+            <span class="plan-period">/mes</span>
+          </div>
+        </div>
+        <ul class="plan-features" aria-label="Incluye">
+          <li class="plan-feat">
+            <svg class="feat-icon" viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            Sitio web hasta 5 páginas
+          </li>
+          <li class="plan-feat">
+            <svg class="feat-icon" viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            Diseño responsive y optimizado
+          </li>
+          <li class="plan-feat">
+            <svg class="feat-icon" viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            Posicionamiento en buscadores
+          </li>
+          <li class="plan-feat">
+            <svg class="feat-icon" viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            Panel de administración propio
+          </li>
+          <li class="plan-feat">
+            <svg class="feat-icon" viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            Soporte y mantenimiento incluido
+          </li>
+        </ul>
+        <a href="#contacto" class="btn btn-outline-dark" id="plan-esencial-btn">Consultar</a>
+      </article>
+
+      <!-- Plan 02 (destacado) -->
+      <article class="plan featured" aria-label="Plan Profesional">
+        <div class="plan-tier">
+          <span class="plan-tier-dot" aria-hidden="true"></span>
+          Profesional
+        </div>
+        <h3>Digital + IA</h3>
+        <p class="plan-desc">Presencia digital completa con asistente inteligente que atiende a tus clientes las 24 horas.</p>
+        <div class="plan-price">
+          <span class="plan-from">Desde</span>
+          <div class="plan-amount">
+            <span class="plan-currency">$</span>
+            <span class="plan-num">599</span>
+            <span class="plan-period">/mes</span>
+          </div>
+        </div>
+        <ul class="plan-features" aria-label="Incluye">
+          <li class="plan-feat">
+            <svg class="feat-icon" viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            Todo lo del plan Esencial
+          </li>
+          <li class="plan-feat">
+            <svg class="feat-icon" viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            Asistente con IA (web + WhatsApp)
+          </li>
+          <li class="plan-feat">
+            <svg class="feat-icon" viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            Hasta 10 páginas y secciones
+          </li>
+          <li class="plan-feat">
+            <svg class="feat-icon" viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            Analítica mensual detallada
+          </li>
+          <li class="plan-feat">
+            <svg class="feat-icon" viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            Soporte prioritario (respuesta en 12h)
+          </li>
+        </ul>
+        <a href="#contacto" class="btn btn-dark" id="plan-profesional-btn">Consultar</a>
+      </article>
+
+      <!-- Plan 03 -->
+      <article class="plan" aria-label="Plan Empresarial">
+        <div class="plan-tier">
+          <span class="plan-tier-dot" aria-hidden="true"></span>
+          Empresarial
+        </div>
+        <h3>Transformación Total</h3>
+        <p class="plan-desc">Transformación digital completa con automatización de procesos y consultor estratégico dedicado.</p>
+        <div class="plan-price">
+          <span class="plan-from">Desde</span>
+          <div class="plan-amount">
+            <span class="plan-currency">$</span>
+            <span class="plan-num">999</span>
+            <span class="plan-period">/mes</span>
+          </div>
+        </div>
+        <ul class="plan-features" aria-label="Incluye">
+          <li class="plan-feat">
+            <svg class="feat-icon" viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            Todo lo del plan Profesional
+          </li>
+          <li class="plan-feat">
+            <svg class="feat-icon" viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            Automatización de procesos internos
+          </li>
+          <li class="plan-feat">
+            <svg class="feat-icon" viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            Integración con tus sistemas actuales
+          </li>
+          <li class="plan-feat">
+            <svg class="feat-icon" viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            Consultor estratégico dedicado
+          </li>
+          <li class="plan-feat">
+            <svg class="feat-icon" viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,3"/></svg>
+            Soporte 24/7 por WhatsApp
+          </li>
+        </ul>
+        <a href="#contacto" class="btn btn-outline-dark" id="plan-empresarial-btn">Consultar</a>
+      </article>
+
+    </div>
+
+    <p class="pricing-note reveal d3">
+      ¿No sabés qué plan elegir?
+      <a href="#contacto" id="pricing-link">Agendá una llamada gratuita</a>
+      y te ayudamos a decidir sin compromiso.
+    </p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CTA SECTION — sección oscura dramática
+══════════════════════════════════════ -->
+<section class="cta-section" aria-label="Comenzar con InfoData">
+  <div class="container">
+    <div class="cta-inner">
+
+      <h2 class="cta-headline reveal">
+        ¿Listo para dar el
+        <em>siguiente paso?</em>
+      </h2>
+
+      <div class="cta-bottom">
+        <p class="cta-body reveal d1">
+          La primera consulta es gratuita y sin compromiso.
+          Contanos sobre tu empresa y en menos de 24 horas
+          uno de nuestros especialistas se pone en contacto.
+        </p>
+        <div class="cta-actions reveal d2">
+          <a href="#contacto" class="btn btn-cream" id="cta-primary-btn">
+            Escribirnos ahora
+          </a>
+          <a href="tel:+5491100000000" class="btn btn-outline-dark"
+             style="--border:rgba(244,239,231,0.2);color:var(--cream-65);"
+             id="cta-phone-btn">
+            Llamar directo
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CONTACT — formulario sin bordes
+══════════════════════════════════════ -->
+<section id="contacto" class="contact" aria-label="Formulario de contacto">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- Info -->
+      <div class="contact-left">
+        <p class="section-label reveal" style="margin-bottom:1.5rem;">Contacto</p>
+        <h2 class="contact-title reveal d1">
+          Hablemos de<br>
+          <em>tu empresa.</em>
+        </h2>
+        <p class="contact-intro reveal d2">
+          Completá el formulario y uno de nuestros consultores se comunicará en menos de 24 horas. Sin rodeos, sin ventas agresivas.
+        </p>
+
+        <div class="contact-data reveal d3">
+          <div class="contact-row">
+            <span class="contact-row-label">Email</span>
+            <span class="contact-row-value">hola@infodata.com</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-label">WhatsApp</span>
+            <span class="contact-row-value">+54 9 11 0000-0000</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-label">Horario</span>
+            <span class="contact-row-value">Lun – Vie · 9–18h (GMT-3)</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-label">Zona de servicio</span>
+            <span class="contact-row-value">América Latina</span>
+          </div>
+        </div>
+
+        <div class="contact-socials reveal d4">
+          <a href="#" class="social-text ul-hover" id="social-linkedin">LinkedIn</a>
+          <a href="#" class="social-text ul-hover" id="social-instagram">Instagram</a>
+          <a href="#" class="social-text ul-hover" id="social-twitter">Twitter</a>
+        </div>
+      </div>
+
+      <!-- Formulario -->
+      <div class="reveal d2">
+        <form id="contact-form" class="contact-form" novalidate aria-label="Formulario de contacto">
+
+          <div class="field-row">
+            <div class="field">
+              <label class="field-label" for="f-nombre">Nombre</label>
+              <input class="field-input" type="text" id="f-nombre" name="nombre"
+                     placeholder="Juan García" required autocomplete="given-name" />
+            </div>
+            <div class="field">
+              <label class="field-label" for="f-empresa">Empresa</label>
+              <input class="field-input" type="text" id="f-empresa" name="empresa"
+                     placeholder="Mi Empresa S.L." autocomplete="organization" />
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label class="field-label" for="f-email">Email</label>
+              <input class="field-input" type="email" id="f-email" name="email"
+                     placeholder="juan@empresa.com" required autocomplete="email" />
+            </div>
+            <div class="field">
+              <label class="field-label" for="f-telefono">Teléfono</label>
+              <input class="field-input" type="tel" id="f-telefono" name="telefono"
+                     placeholder="+54 9 11 0000-0000" autocomplete="tel" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="f-servicio">¿Qué necesitás?</label>
+            <select class="field-input" id="f-servicio" name="servicio" required>
+              <option value="" disabled selected>Seleccioná una opción</option>
+              <option value="web">Presencia digital / Sitio web</option>
+              <option value="ia">Asistente con inteligencia artificial</option>
+              <option value="auto">Automatización de procesos</option>
+              <option value="combo">Solución completa</option>
+              <option value="consulta">Solo quiero una consulta</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="f-mensaje">Contanos sobre tu empresa</label>
+            <textarea class="field-input" id="f-mensaje" name="mensaje" rows="4"
+              placeholder="Describí tu empresa, el sector y qué problema querés resolver…"></textarea>
+          </div>
+
+          <div class="form-submit-row">
+            <p class="form-note">Primera consulta sin costo y sin compromiso.</p>
+            <button type="submit" class="btn btn-dark" id="form-submit-btn">
+              Enviar mensaje
+            </button>
+          </div>
+
+        </form>
+
+        <div id="form-success" class="form-success" role="alert">
+          <h3>Mensaje recibido.</h3>
+          <p>Te contactamos en menos de 24 horas hábiles.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+
+      <div class="footer-brand">
+        <span class="footer-logo">Info<em>Data</em></span>
+        <p>Transformación digital para micro, pequeñas y medianas empresas de América Latina. Tecnología de primer nivel, a la escala de tu negocio.</p>
+      </div>
+
+      <nav aria-label="Servicios">
+        <p class="footer-col-title">Servicios</p>
+        <ul class="footer-links">
+          <li><a href="#servicios" id="f-web">Presencia digital</a></li>
+          <li><a href="#servicios" id="f-ia">Inteligencia artificial</a></li>
+          <li><a href="#servicios" id="f-auto">Automatización</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Empresa">
+        <p class="footer-col-title">Empresa</p>
+        <ul class="footer-links">
+          <li><a href="#nosotros" id="f-nosotros">Nosotros</a></li>
+          <li><a href="#precios"  id="f-precios">Planes</a></li>
+          <li><a href="#contacto" id="f-contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <p class="footer-col-title">Contacto</p>
+        <ul class="footer-links">
+          <li><a href="mailto:hola@infodata.com" id="f-email">hola@infodata.com</a></li>
+          <li><a href="#" id="f-whatsapp">WhatsApp</a></li>
+          <li>Lun – Vie · 9–18h (GMT-3)</li>
+          <li>América Latina</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">
+        © <span class="js-year">2025</span> InfoData. Todos los derechos reservados.
+      </p>
+      <nav class="footer-legal" aria-label="Legal">
+        <a href="#" id="f-privacidad">Privacidad</a>
+        <a href="#" id="f-terminos">Términos</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
