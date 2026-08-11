@@ -3,25 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="InfoData — Soluciones digitales para micro, pequeñas y medianas empresas. Presencia web, inteligencia artificial y automatización de procesos en América Latina." />
-  <meta property="og:title" content="InfoData — Tecnología con carácter" />
+  <meta name="description" content="InfoData Consulting — Soluciones digitales para micro, pequeñas y medianas empresas. Presencia web, inteligencia artificial y automatización de procesos en América Latina." />
+  <meta property="og:title" content="InfoData Consulting — Tecnología con carácter" />
   <meta property="og:description" content="Presencia digital, asistentes con IA y automatización para empresas latinoamericanas que quieren crecer." />
   <meta property="og:type" content="website" />
-  <title>InfoData — Tecnología con carácter</title>
+  <title>InfoData Consulting — Tecnología con carácter</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/components.css" />
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='5' fill='%230C1A0D'/><text y='23' x='7' font-family='Georgia,serif' font-size='20' font-style='italic' font-weight='600' fill='%23EAF0E9'>i</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='5' fill='%230C1728'/><text y='23' x='7' font-family='Georgia,serif' font-size='20' font-style='italic' font-weight='600' fill='%23EAF0F7'>i</text></svg>" />
 </head>
 <body>
 
+<!-- ── Cursor personalizado ─── -->
+<div id="c-dot"  aria-hidden="true"></div>
+<div id="c-ring" aria-hidden="true"></div>
+
+<!-- ── Page loader ─── -->
+<div id="page-loader" aria-hidden="true">
+  <span class="loader-logo">Info<em>Data</em></span>
+  <div class="loader-bar"></div>
+</div>
+
 <!-- Barra de progreso de scroll -->
 <div id="scroll-progress" aria-hidden="true"></div>
+
+<!-- Ambient floating particles (covers light sections) -->
+<canvas id="ambient-particles" aria-hidden="true"></canvas>
 
 
 <!-- ══════════════════════════════════════
@@ -31,7 +45,7 @@
   <div class="container">
     <nav class="navbar-inner" aria-label="Navegación principal">
 
-      <a href="#inicio" class="navbar-logo" aria-label="InfoData — Inicio">
+      <a href="#inicio" class="navbar-logo" aria-label="InfoData Consulting — Inicio">
         Info<em>Data</em>
       </a>
 
@@ -62,35 +76,37 @@
      HERO — tipografía que llena el viewport
 ══════════════════════════════════════ -->
 <section id="inicio" class="hero" aria-label="Inicio">
+  <!-- Canvas mesh gradient — respira detrás del hero -->
+  <canvas id="hero-gradient" aria-hidden="true"></canvas>
   <div class="container">
     <div class="hero-body">
 
       <!-- Eyebrow -->
-      <p class="hero-eyebrow h-1" aria-hidden="true">
+      <p class="hero-eyebrow" id="hero-eyebrow" aria-hidden="true">
         <span class="hero-eyebrow-dot"></span>
-        InfoData · América Latina · <span class="js-year">2025</span>
+        InfoData Consulting · América Latina · <span class="js-year">2025</span>
       </p>
 
-      <!-- Titular principal — ENORME -->
+      <!-- Titular principal — GSAP lo anima, sin clases CSS de animación -->
       <div class="hero-headline" aria-label="Tecnología con carácter, para empresas que crecen.">
-        <span class="headline-word h-1">Tecnología</span>
-        <span class="headline-word-serif h-2">con carácter,</span>
-        <span class="headline-word h-3">para empresas</span>
-        <span class="headline-word h-3">que crecen.</span>
+        <span class="headline-word">Tecnología</span>
+        <span class="headline-word-serif">con carácter,</span>
+        <span class="headline-word">para empresas</span>
+        <span class="headline-word">que crecen.</span>
       </div>
 
-      <!-- Línea divisoria -->
-      <div class="hero-divider line-grow h-4" aria-hidden="true"></div>
+      <!-- Línea divisoria — GSAP la anima -->
+      <div class="hero-divider" aria-hidden="true"></div>
 
       <!-- Descripción + CTA -->
       <div class="hero-bottom">
-        <p class="hero-desc h-4">
+        <p class="hero-desc">
           Potenciamos micro, pequeñas y medianas empresas con
           <strong>presencia digital de alto impacto</strong>,
           <strong>atención automatizada con inteligencia artificial</strong>
           y flujos de trabajo que liberan tiempo real para tu equipo.
         </p>
-        <div class="hero-actions h-5">
+        <div class="hero-actions">
           <a href="#contacto" class="btn btn-dark" id="hero-cta-primary">
             Consulta gratuita
           </a>
@@ -103,7 +119,7 @@
     </div>
 
     <!-- Stats -->
-    <div class="hero-stats h-6" aria-label="InfoData en números">
+    <div class="hero-stats" aria-label="InfoData en números">
       <div class="hero-stat">
         <div class="stat-n"><span data-target="50" data-suffix="+">50+</span></div>
         <div class="stat-d">Clientes activos</div>
@@ -123,7 +139,7 @@
     </div>
   </div>
 
-  <div class="scroll-indicator h-6" aria-hidden="true">
+  <div class="scroll-indicator" aria-hidden="true">
     <div class="scroll-line"></div>
     <span>Scroll</span>
   </div>
@@ -138,22 +154,22 @@
     <div class="manifesto-inner">
 
       <div class="manifesto-header">
-        <h2 class="manifesto-statement reveal">
+        <h2 class="manifesto-statement">
           Las empresas pequeñas merecen
           <em>grandes</em> herramientas.
         </h2>
-        <p class="section-label section-label-light reveal d2">Nuestra convicción</p>
+        <p class="section-label section-label-light reveal">Nuestra convicción</p>
       </div>
 
       <div class="manifesto-body">
 
-        <p class="manifesto-text reveal d1">
+        <p class="manifesto-text">
           Durante años, las herramientas digitales más poderosas estuvieron reservadas para corporaciones con grandes presupuestos.
           InfoData existe para cambiar eso. Trabajamos exclusivamente con MIPYMES porque creemos que el tamaño de una empresa
           no debería determinar la calidad de su tecnología.
         </p>
 
-        <div class="manifesto-pills reveal d2">
+        <div class="manifesto-pills">
           <div class="manifesto-pill">
             <span class="pill-label">Presencia digital</span>
             <span class="pill-num">01</span>
@@ -181,15 +197,15 @@
   <div class="container">
 
     <div class="services-header">
-      <div class="reveal">
+      <div>
         <p class="section-label" style="margin-bottom:1.5rem;">Servicios</p>
-        <h2 style="font-size:clamp(2rem,4.5vw,4.5rem);font-weight:700;letter-spacing:-0.04em;line-height:1.04;color:var(--ink);">
+        <h2 class="services-title">
           Tres formas<br>
-          <em style="font-family:var(--font-serif);font-style:italic;font-weight:600;color:var(--green);">de escalar</em><br>
+          <em class="serif-accent">de escalar</em><br>
           tu empresa.
         </h2>
       </div>
-      <div class="services-header-right reveal d2">
+      <div class="services-header-right">
         <p>
           Cada servicio está diseñado para generar resultados medibles y puede
           implementarse de forma independiente o en conjunto, según la etapa de tu negocio.
@@ -200,7 +216,7 @@
     <!-- Lista de servicios -->
     <div class="services-list" aria-label="Lista de servicios">
 
-      <article class="service-row row-flip reveal" aria-label="Presencia digital">
+      <article class="service-row row-flip" aria-label="Presencia digital">
         <span class="service-row-bg-num" aria-hidden="true">01</span>
         <span class="service-row-num row-flip-num">01</span>
         <h3 class="service-row-name row-flip-text">Presencia digital</h3>
@@ -214,7 +230,7 @@
         </a>
       </article>
 
-      <article class="service-row row-flip reveal d1" aria-label="Inteligencia artificial">
+      <article class="service-row row-flip" aria-label="Inteligencia artificial">
         <span class="service-row-bg-num" aria-hidden="true">02</span>
         <span class="service-row-num row-flip-num">02</span>
         <h3 class="service-row-name row-flip-text">Inteligencia artificial</h3>
@@ -228,7 +244,7 @@
         </a>
       </article>
 
-      <article class="service-row row-flip reveal d2" aria-label="Automatización">
+      <article class="service-row row-flip" aria-label="Automatización">
         <span class="service-row-bg-num" aria-hidden="true">03</span>
         <span class="service-row-num row-flip-num">03</span>
         <h3 class="service-row-name row-flip-text">Automatización</h3>
@@ -276,27 +292,26 @@
 
     <div class="why-top">
       <p class="section-label reveal" style="margin-bottom:1.5rem;">Nosotros</p>
-      <h2 class="why-claim reveal d1">
+      <h2 class="why-claim">
         No solo entregamos proyectos. Acompañamos el
         <em>crecimiento</em> de cada empresa.
       </h2>
     </div>
 
-    <div class="why-divider reveal-clip" aria-hidden="true"></div>
+    <div class="why-divider" aria-hidden="true"></div>
 
     <div class="why-bottom">
 
       <div>
-        <p class="why-text reveal">
+        <p class="why-text">
           Entendemos la realidad de las MIPYMES en América Latina: presupuestos acotados, equipos pequeños y la presión de competir con empresas más grandes. Por eso construimos soluciones que funcionan desde el primer día — sin complejidad innecesaria, con resultados que puedes ver y medir.
           <br><br>
           Cada cliente recibe la misma dedicación que daríamos a una empresa del Fortune 500. Porque creemos que el tamaño de un negocio no debería limitar la calidad de sus herramientas digitales.
         </p>
 
-        <!-- Métricas -->
-        <div class="why-metrics reveal d2" aria-label="Métricas clave">
+        <div class="why-metrics" aria-label="Métricas clave">
           <div class="metric-cell">
-            <div class="metric-num"><span data-target="40" data-suffix="h">40h</span><span class="accent">/mes</span></div>
+            <div class="metric-num"><span data-target="40" data-suffix="h">40h</span></div>
             <p class="metric-label">Ahorro promedio con automatización</p>
           </div>
           <div class="metric-cell">
@@ -314,18 +329,17 @@
         </div>
       </div>
 
-      <!-- Lista de razones -->
       <div class="why-items" aria-label="Razones para elegir InfoData">
 
-        <div class="why-item reveal">
+        <div class="why-item">
           <span class="why-item-num">01</span>
           <div class="why-item-content">
             <h4>Sin intermediarios</h4>
-            <p>Tu proyecto lo maneja nuestro equipo directo. Nunca subcontratamos, siempre tenés acceso a quien tomó las decisiones de tu proyecto.</p>
+            <p>Tu proyecto lo maneja nuestro equipo directo. Nunca subcontratamos, siempre tenés acceso a quien tomó las decisiones.</p>
           </div>
         </div>
 
-        <div class="why-item reveal d1">
+        <div class="why-item">
           <span class="why-item-num">02</span>
           <div class="why-item-content">
             <h4>Entrega en semanas, no meses</h4>
@@ -333,19 +347,19 @@
           </div>
         </div>
 
-        <div class="why-item reveal d2">
+        <div class="why-item">
           <span class="why-item-num">03</span>
           <div class="why-item-content">
             <h4>Comprometidos con tus objetivos</h4>
-            <p>No cobramos por horas. Nos alineamos con los resultados que necesitás. Si algo no funciona, lo ajustamos sin costo adicional.</p>
+            <p>Nos alineamos con los resultados que necesitás. Si algo no funciona, lo ajustamos sin costo adicional.</p>
           </div>
         </div>
 
-        <div class="why-item reveal d3">
+        <div class="why-item">
           <span class="why-item-num">04</span>
           <div class="why-item-content">
             <h4>Conocemos el mercado regional</h4>
-            <p>Trabajamos exclusivamente en América Latina. Conocemos el contexto, las plataformas y los hábitos de compra de la región.</p>
+            <p>Trabajamos exclusivamente en América Latina. Conocemos el contexto, las plataformas y los hábitos de la región.</p>
           </div>
         </div>
 
@@ -356,23 +370,23 @@
 
 
 <!-- ══════════════════════════════════════
-     PRICING — grid limpio sin decoración
+     PRICING
 ══════════════════════════════════════ -->
 <section id="precios" class="pricing" aria-label="Planes y precios">
   <div class="container">
 
     <div class="pricing-header">
       <p class="section-label reveal" style="margin-bottom:1.25rem;">Planes</p>
-      <h2 class="pricing-headline reveal d1">
+      <h2 class="pricing-headline">
         Inversión clara,<br>
         <em>sin sorpresas.</em>
       </h2>
-      <p class="pricing-sub reveal d2">
+      <p class="pricing-sub reveal">
         * Valores orientativos. Cada propuesta se adapta a tu empresa y objetivos.
       </p>
     </div>
 
-    <div class="plans-grid reveal d2" aria-label="Planes disponibles">
+    <div class="plans-grid" aria-label="Planes disponibles">
 
       <!-- Plan 01 -->
       <article class="plan" aria-label="Plan Esencial">
@@ -415,7 +429,7 @@
         <a href="#contacto" class="btn btn-outline-dark" id="plan-esencial-btn">Consultar</a>
       </article>
 
-      <!-- Plan 02 (destacado) -->
+      <!-- Plan 02 -->
       <article class="plan featured" aria-label="Plan Profesional">
         <div class="plan-tier">
           <span class="plan-tier-dot" aria-hidden="true"></span>
@@ -450,7 +464,7 @@
           </li>
           <li class="plan-feat">
             <svg class="feat-icon" viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,10.5 12,3"/></svg>
-            Soporte prioritario (respuesta en 12h)
+            Soporte prioritario (12h)
           </li>
         </ul>
         <a href="#contacto" class="btn btn-dark" id="plan-profesional-btn">Consultar</a>
@@ -499,7 +513,7 @@
 
     </div>
 
-    <p class="pricing-note reveal d3">
+    <p class="pricing-note reveal">
       ¿No sabés qué plan elegir?
       <a href="#contacto" id="pricing-link">Agendá una llamada gratuita</a>
       y te ayudamos a decidir sin compromiso.
@@ -515,23 +529,24 @@
   <div class="container">
     <div class="cta-inner">
 
-      <h2 class="cta-headline reveal">
+      <h2 class="cta-headline">
         ¿Listo para dar el
         <em>siguiente paso?</em>
       </h2>
 
       <div class="cta-bottom">
-        <p class="cta-body reveal d1">
+        <p class="cta-body">
           La primera consulta es gratuita y sin compromiso.
           Contanos sobre tu empresa y en menos de 24 horas
           uno de nuestros especialistas se pone en contacto.
         </p>
-        <div class="cta-actions reveal d2">
+        <div class="cta-actions">
           <a href="#contacto" class="btn btn-cream" id="cta-primary-btn">
             Escribirnos ahora
           </a>
-          <a href="tel:+51948574026" class="btn btn-outline-dark"
-             style="--border:rgba(244,239,231,0.2);color:var(--cream-65);"
+          <a href="tel:+5491100000000"
+             class="btn btn-outline-dark"
+             style="--border:rgba(242,245,250,0.2);color:var(--cream-65);"
              id="cta-phone-btn">
             Llamar directo
           </a>
@@ -544,7 +559,90 @@
 
 
 <!-- ══════════════════════════════════════
-     CONTACT — formulario sin bordes
+     TESTIMONIALS — scroll horizontal vinculado al scroll vertical
+══════════════════════════════════════ -->
+<section class="testi" aria-label="Lo que dicen nuestros clientes">
+  <div class="container">
+    <div class="testi-header">
+      <p class="section-label" style="margin-bottom:1.5rem;">Testimonios</p>
+      <h2 class="testi-title">Lo que dicen quienes ya <em class="serif-accent">confiaron</em> en nosotros.</h2>
+    </div>
+  </div>
+  <div class="testi-scroll">
+    <div class="testi-track">
+
+      <article class="testi-card">
+        <blockquote>
+          <p>"InfoData transformó nuestra presencia online por completo. En menos de un mes teníamos una web que realmente representa lo que somos como empresa."</p>
+        </blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">MR</div>
+          <div>
+            <strong>María Rodríguez</strong>
+            <span>CEO · Grupo Altavista</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="testi-card">
+        <blockquote>
+          <p>"El asistente con IA que implementaron atiende el 73% de las consultas sin intervención humana. Nuestro equipo de ventas ahora se enfoca en cerrar, no en responder preguntas repetitivas."</p>
+        </blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">CL</div>
+          <div>
+            <strong>Carlos López</strong>
+            <span>Director Comercial · TechnoSur</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="testi-card">
+        <blockquote>
+          <p>"Lo que más valoramos es la transparencia. Desde el primer día supimos exactamente qué estábamos contratando, cuánto costaba y cuándo estaría listo. Sin sorpresas."</p>
+        </blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">AF</div>
+          <div>
+            <strong>Ana Fernández</strong>
+            <span>Fundadora · Estudio Nómada</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="testi-card">
+        <blockquote>
+          <p>"La automatización nos ahorra más de 50 horas mensuales en tareas administrativas. Es como tener un empleado extra que nunca descansa y nunca se equivoca."</p>
+        </blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">JM</div>
+          <div>
+            <strong>Javier Martínez</strong>
+            <span>COO · Distribuciones Andina</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="testi-card">
+        <blockquote>
+          <p>"Probamos con tres agencias antes. La diferencia con InfoData es que entienden nuestro negocio, no solo la tecnología. Eso se nota en cada decisión que toman."</p>
+        </blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">LP</div>
+          <div>
+            <strong>Laura Pérez</strong>
+            <span>Gerente General · Soluciones MiPyme</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     CONTACT — formulario integrado
 ══════════════════════════════════════ -->
 <section id="contacto" class="contact" aria-label="Formulario de contacto">
   <div class="container">
@@ -552,23 +650,23 @@
 
       <!-- Info -->
       <div class="contact-left">
-        <p class="section-label reveal" style="margin-bottom:1.5rem;">Contacto</p>
-        <h2 class="contact-title reveal d1">
+        <p class="section-label" style="margin-bottom:1.5rem;">Contacto</p>
+        <h2 class="contact-title">
           Hablemos de<br>
           <em>tu empresa.</em>
         </h2>
-        <p class="contact-intro reveal d2">
+        <p class="contact-intro">
           Completá el formulario y uno de nuestros consultores se comunicará en menos de 24 horas. Sin rodeos, sin ventas agresivas.
         </p>
 
-        <div class="contact-data reveal d3">
+        <div class="contact-data">
           <div class="contact-row">
             <span class="contact-row-label">Email</span>
             <span class="contact-row-value">hola@infodata.com</span>
           </div>
           <div class="contact-row">
             <span class="contact-row-label">WhatsApp</span>
-            <span class="contact-row-value">+51 948574026</span>
+            <span class="contact-row-value">+54 9 11 0000-0000</span>
           </div>
           <div class="contact-row">
             <span class="contact-row-label">Horario</span>
@@ -580,7 +678,7 @@
           </div>
         </div>
 
-        <div class="contact-socials reveal d4">
+        <div class="contact-socials">
           <a href="#" class="social-text ul-hover" id="social-linkedin">LinkedIn</a>
           <a href="#" class="social-text ul-hover" id="social-instagram">Instagram</a>
           <a href="#" class="social-text ul-hover" id="social-twitter">Twitter</a>
@@ -588,7 +686,7 @@
       </div>
 
       <!-- Formulario -->
-      <div class="reveal d2">
+      <div>
         <form id="contact-form" class="contact-form" novalidate aria-label="Formulario de contacto">
 
           <div class="field-row">
@@ -613,7 +711,7 @@
             <div class="field">
               <label class="field-label" for="f-telefono">Teléfono</label>
               <input class="field-input" type="tel" id="f-telefono" name="telefono"
-                     placeholder="+51 948574026" autocomplete="tel" />
+                     placeholder="+54 9 11 0000-0000" autocomplete="tel" />
             </div>
           </div>
 
@@ -699,7 +797,7 @@
 
     <div class="footer-bottom">
       <p class="footer-copyright">
-        © <span class="js-year">2025</span> InfoData. Todos los derechos reservados.
+        © <span class="js-year">2025</span> InfoData Consulting. Todos los derechos reservados.
       </p>
       <nav class="footer-legal" aria-label="Legal">
         <a href="#" id="f-privacidad">Privacidad</a>
@@ -708,6 +806,10 @@
     </div>
   </div>
 </footer>
+
+<!-- ── CDN: GSAP + ScrollTrigger ── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <script src="js/main.js"></script>
 </body>

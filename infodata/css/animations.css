@@ -1,15 +1,11 @@
 /* ============================================================
-   InfoData — animations.css  |  Minimal, elegant
+   InfoData — animations.css  |  GSAP-powered premium
    ============================================================ */
 
+/* ── Keyframes básicos ───────────────────────────────────────── */
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes line-grow {
-  from { width: 0; }
-  to   { width: 100%; }
 }
 
 @keyframes fade-in {
@@ -22,40 +18,173 @@
   to   { transform: translateX(-50%); }
 }
 
-/* Barra de progreso de scroll */
-@keyframes none {}
+@keyframes loader-run {
+  from { width: 0; }
+  to   { width: 100%; }
+}
 
-/* ── Hero entrance ───────────────────────────────────────────── */
-.h-1 { animation: fade-up 1.1s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
-.h-2 { animation: fade-up 1.1s cubic-bezier(0.16,1,0.3,1) 0.22s both; }
-.h-3 { animation: fade-up 1.1s cubic-bezier(0.16,1,0.3,1) 0.34s both; }
-.h-4 { animation: fade-up 0.9s cubic-bezier(0.16,1,0.3,1) 0.5s both; }
-.h-5 { animation: fade-up 0.9s cubic-bezier(0.16,1,0.3,1) 0.62s both; }
-.h-6 { animation: fade-in  0.8s ease 0.9s both; }
+@keyframes cursor-ping {
+  0%   { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+  100% { transform: translate(-50%, -50%) scale(2.4); opacity: 0; }
+}
 
-/* Línea que crece */
-.line-grow {
-  display: block;
+
+/* ══════════════════════════════════════════════════════════════
+   PAGE LOADER — thin & minimal
+══════════════════════════════════════════════════════════════ */
+#page-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9997;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+  pointer-events: all;
+}
+#page-loader.loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-logo {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink-35);
+  letter-spacing: -0.01em;
+}
+.loader-logo em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.loader-bar {
+  width: 80px;
   height: 1px;
-  width: 0;
-  background: var(--border, rgba(12,23,40,0.14));
-  animation: line-grow 1.4s cubic-bezier(0.16,1,0.3,1) 0.3s both;
+  background: var(--border);
+  border-radius: 1px;
+  overflow: hidden;
+  position: relative;
+}
+.loader-bar::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%;
+  background: var(--ink);
+  border-radius: 1px;
+  animation: loader-run 0.85s cubic-bezier(0.16,1,0.3,1) forwards;
 }
 
-.line-grow-cream {
-  background: var(--border-dark, rgba(244,239,231,0.14));
+
+/* ══════════════════════════════════════════════════════════════
+   CUSTOM CURSOR — agencia premium
+══════════════════════════════════════════════════════════════ */
+#c-dot {
+  position: fixed;
+  width: 5px; height: 5px;
+  background: var(--ink);
+  border-radius: 50%;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition:
+    width  0.25s cubic-bezier(0.16,1,0.3,1),
+    height 0.25s cubic-bezier(0.16,1,0.3,1),
+    background 0.3s ease,
+    opacity 0.3s ease;
+  will-change: transform;
 }
 
-/* ── Marquee ─────────────────────────────────────────────────── */
+#c-ring {
+  position: fixed;
+  width: 38px; height: 38px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  opacity: 0.38;
+  transition:
+    width  0.45s cubic-bezier(0.16,1,0.3,1),
+    height 0.45s cubic-bezier(0.16,1,0.3,1),
+    border-color 0.3s ease,
+    opacity 0.35s ease;
+  will-change: transform;
+}
+
+/* Hover sobre interactivos */
+body.c-hover #c-dot  { width: 3px; height: 3px; }
+body.c-hover #c-ring { width: 54px; height: 54px; opacity: 0.2; }
+
+/* Sobre secciones oscuras */
+body.c-dark #c-dot  { background: var(--cream); }
+body.c-dark #c-ring { border-color: var(--cream); }
+
+/* Click */
+body.c-click #c-ring { width: 26px; height: 26px; opacity: 0.7; transition-duration: 0.12s; }
+body.c-click #c-dot  { width: 7px; height: 7px; }
+
+/* Sin cursor nativo cuando el custom está activo */
+body.has-cursor,
+body.has-cursor * { cursor: none !important; }
+
+/* Ocultar en touch */
+@media (hover: none) {
+  #c-dot, #c-ring { display: none; }
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   SPLIT TEXT — efecto "words rising" (GSAP desde JS)
+══════════════════════════════════════════════════════════════ */
+.split-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom; /* evita corte de descendentes (g, p, y) */
+  padding-bottom: 0.08em; /* espacio para letras con cola */
+}
+
+.split-inner {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   GSAP reveal — estado inicial para elementos no-hero
+   GSAP los anima, no el CSS (no transition aquí)
+══════════════════════════════════════════════════════════════ */
+.reveal, .reveal-clip {
+  /* GSAP gestiona la animación completamente */
+  will-change: transform, opacity;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   MARQUEE
+══════════════════════════════════════════════════════════════ */
 .marquee-track { overflow: hidden; width: 100%; }
 .marquee-inner {
   display: flex;
   width: max-content;
-  animation: marquee-left 50s linear infinite;
+  animation: marquee-left 55s linear infinite;
 }
 .marquee-track:hover .marquee-inner { animation-play-state: paused; }
 
-/* ── Row flip (servicios) ─────────────────────────────────────── */
+
+/* ══════════════════════════════════════════════════════════════
+   ROW FLIP (servicios) — hover que invierte el bloque completo
+══════════════════════════════════════════════════════════════ */
 .row-flip {
   background: transparent;
   transition:
@@ -64,20 +193,21 @@
   cursor: default;
 }
 
-/* Las clases de texto hijas deben tener su propia transition */
 .row-flip-text   { transition: color 0.4s ease; }
 .row-flip-num    { transition: color 0.4s ease; }
 .row-flip-label  { transition: color 0.4s ease, opacity 0.4s ease; }
 .row-flip-arrow  { transition: color 0.4s ease, transform 0.4s ease; }
 
-/* Estado hover — sobre fondo claro */
-.row-flip:hover                   { background: var(--ink); border-color: var(--ink) !important; }
-.row-flip:hover .row-flip-text    { color: var(--cream); }
-.row-flip:hover .row-flip-num     { color: var(--cream-35); }
-.row-flip:hover .row-flip-label   { color: var(--cream-65); opacity: 1; }
-.row-flip:hover .row-flip-arrow   { color: var(--cream); transform: translateX(6px); }
+.row-flip:hover                  { background: var(--ink); border-color: var(--ink) !important; }
+.row-flip:hover .row-flip-text   { color: var(--cream); }
+.row-flip:hover .row-flip-num    { color: var(--cream-35); }
+.row-flip:hover .row-flip-label  { color: var(--cream-65); opacity: 1; }
+.row-flip:hover .row-flip-arrow  { color: var(--cream); transform: translateX(6px); }
 
-/* ── Hover link subrayado ────────────────────────────────────── */
+
+/* ══════════════════════════════════════════════════════════════
+   HOVER LINK subrayado
+══════════════════════════════════════════════════════════════ */
 .ul-hover {
   position: relative;
   display: inline-block;
@@ -91,3 +221,176 @@
   transition: width 0.32s cubic-bezier(0.16,1,0.3,1);
 }
 .ul-hover:hover::after { width: 100%; }
+
+
+/* ══════════════════════════════════════════════════════════════
+   PLAN hover mejorado — número grande al fondo se anima
+══════════════════════════════════════════════════════════════ */
+.plan { transition: background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease; }
+.plan:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(12,23,40,0.08); }
+
+/* Magnetic button — GSAP gestiona el transform, CSS gestiona resto */
+.btn { transition: background 0.28s ease, color 0.28s ease, border-color 0.28s ease; }
+
+
+/* ══════════════════════════════════════════════════════════════
+   HERO CANVAS — mesh gradient vivo detrás del contenido
+══════════════════════════════════════════════════════════════ */
+#hero-gradient {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.hero { position: relative; }
+.hero > .container,
+.hero > .scroll-indicator { position: relative; z-index: 1; }
+
+
+/* ══════════════════════════════════════════════════════════════
+   AMBIENT PARTICLES — fixed overlay over light sections
+══════════════════════════════════════════════════════════════ */
+#ambient-particles {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   SERVICE ROW 3D TILT — perspective container
+══════════════════════════════════════════════════════════════ */
+.services-list {
+  perspective: 1200px;
+}
+.service-row {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   HR-GROW — horizontal lines that grow on scroll
+══════════════════════════════════════════════════════════════ */
+.hr-grow {
+  display: block;
+  height: 1px;
+  background: var(--border);
+  transform-origin: left center;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   TESTIMONIALS — horizontal scroll section
+══════════════════════════════════════════════════════════════ */
+.testi {
+  background: var(--bg-muted);
+  padding-block: clamp(4rem, 10vw, 7rem) clamp(3rem, 8vw, 5rem);
+  overflow: hidden;
+}
+
+.testi-header {
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.testi-title {
+  font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  color: var(--ink);
+}
+
+.testi-scroll {
+  overflow: visible;
+  width: 100%;
+}
+
+.testi-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  will-change: transform;
+}
+
+.testi-card {
+  width: clamp(320px, 30vw, 420px);
+  flex-shrink: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.testi-card:hover {
+  border-color: var(--green);
+  box-shadow: 0 8px 32px rgba(29,75,137,0.08);
+  transform: translateY(-3px);
+}
+
+.testi-card blockquote {
+  margin: 0;
+}
+
+.testi-card blockquote p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.testi-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+.testi-author strong {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.testi-author span {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--ink-60);
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .testi-card { width: 85vw; }
+}

@@ -201,6 +201,7 @@
   height: 1px;
   background: var(--border);
   margin-bottom: clamp(2rem, 5vh, 3rem);
+  transform-origin: left center; /* para GSAP scaleX */
 }
 
 /* Descriptor + CTA en dos columnas */
@@ -418,6 +419,23 @@
   color: var(--ink-60);
   line-height: 1.8;
   font-weight: 300;
+}
+
+/* Título de la sección de servicios */
+.services-title {
+  font-size: clamp(2rem, 4.5vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.04;
+  color: var(--ink);
+}
+
+/* Acento serif itálico — usado en múltiples headings */
+.serif-accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--green);
 }
 
 /* Lista de servicios */
