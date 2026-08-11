@@ -148,7 +148,7 @@
 .hero-body {
   position: relative;
   z-index: 1;
-  padding-block: clamp(2rem, 6vh, 4rem);
+  padding-block: clamp(1.5rem, 4vh, 2.5rem);
 }
 
 /* Eyebrow */
@@ -156,7 +156,7 @@
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  margin-bottom: clamp(2rem, 5vh, 3.5rem);
+  margin-bottom: clamp(1rem, 3vh, 1.8rem);
   font-size: 0.7rem;
   font-weight: 400;
   letter-spacing: 0.18em;
@@ -172,13 +172,13 @@
 
 /* HEADLINE ENORME — el corazón del diseño */
 .hero-headline {
-  margin-bottom: clamp(2.5rem, 6vh, 4rem);
+  margin-bottom: clamp(1.5rem, 4vh, 2.5rem);
 }
 
 .headline-word {
   display: block;
   font-family: var(--font-sans);
-  font-size: clamp(4.5rem, 11.5vw, 14rem);
+  font-size: clamp(2.8rem, 6.5vw, 8rem);
   font-weight: 700;
   line-height: 0.93;
   letter-spacing: -0.045em;
@@ -190,7 +190,7 @@
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 600;
-  font-size: clamp(5rem, 12.5vw, 15.5rem);
+  font-size: clamp(3.2rem, 7.2vw, 9rem);
   color: var(--green);
   line-height: 0.9;
   letter-spacing: -0.03em;
@@ -200,7 +200,7 @@
 .hero-divider {
   height: 1px;
   background: var(--border);
-  margin-bottom: clamp(2rem, 5vh, 3rem);
+  margin-bottom: clamp(1.5rem, 3vh, 2rem);
   transform-origin: left center; /* para GSAP scaleX */
 }
 
