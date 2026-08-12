@@ -733,10 +733,14 @@
   background: var(--bg);
   padding: 2.5rem 2rem;
   position: relative;
+  overflow: hidden;
   transition: background 0.35s ease;
   cursor: default;
 }
-.plan:hover { background: var(--ink); }
+.plan:hover {
+  background: var(--ink);
+  cursor: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAAPklEQVQoU2NkYGD4//8/AwMDw/8///n//zMwMAz4//8/AwMjIwMDw/8HBgaG/wwM////MzD8/8DAwPD/AQODga8B0xkTOZXlUk8AAAAASUVORK5CYII=') 6 6, auto;
+}
 
 /* Textos del plan */
 .plan-tier {

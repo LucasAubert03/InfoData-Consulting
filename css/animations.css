@@ -130,6 +130,10 @@ body.c-hover #c-ring { width: 54px; height: 54px; opacity: 0.2; }
 body.c-dark #c-dot  { background: var(--cream); }
 body.c-dark #c-ring { border-color: var(--cream); }
 
+/* Sobre cards de planes */
+body.c-gold #c-dot  { background: #C8A45D; }
+body.c-gold #c-ring { border-color: #C8A45D; opacity: 0.45; }
+
 /* Click */
 body.c-click #c-ring { width: 26px; height: 26px; opacity: 0.7; transition-duration: 0.12s; }
 body.c-click #c-dot  { width: 7px; height: 7px; }
@@ -226,8 +230,52 @@ body.has-cursor * { cursor: none !important; }
 /* ══════════════════════════════════════════════════════════════
    PLAN hover mejorado — número grande al fondo se anima
 ══════════════════════════════════════════════════════════════ */
-.plan { transition: background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease; }
-.plan:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(12,23,40,0.08); }
+.plan {
+  transition: background 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* Línea superior reactiva de acento */
+.plan::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--green, #295c38), var(--ink-35, #4a5568));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+
+/* Destello de luz diagonal (Shimmer effect) */
+.plan::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -120%;
+  width: 70%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transform: rotate(25deg);
+  transition: left 0.75s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.plan:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(12, 23, 40, 0.12);
+}
+
+.plan:hover::before {
+  transform: scaleX(1);
+}
+
+.plan:hover::after {
+  left: 150%;
+}
 
 /* Magnetic button — GSAP gestiona el transform, CSS gestiona resto */
 .btn { transition: background 0.28s ease, color 0.28s ease, border-color 0.28s ease; }

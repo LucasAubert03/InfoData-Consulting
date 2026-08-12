@@ -244,6 +244,11 @@
       'a, button, .service-row, .plan, .manifesto-pill, .why-item, .testi-card, select, textarea, input'
     ));
 
+    document.querySelectorAll('.plan').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('c-gold'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('c-gold'));
+    });
+
     document.querySelectorAll('.manifesto, .cta-section, .footer, .marquee-strip').forEach(el => {
       el.addEventListener('mouseenter', () => document.body.classList.add('c-dark'));
       el.addEventListener('mouseleave', () => document.body.classList.remove('c-dark'));
