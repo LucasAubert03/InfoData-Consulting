@@ -157,8 +157,8 @@ ul, ol { list-style: none; }
 
 /* ── Reveal (scroll) ─────────────────────────────────────────── */
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
+  opacity: 1;
+  transform: none;
   transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
 }
 .reveal.in { opacity: 1; transform: none; }

@@ -241,7 +241,7 @@
       });
     }
     addHover(document.querySelectorAll(
-      'a, button, .service-row, .plan, .manifesto-pill, .why-item, .testi-card, select, textarea, input'
+      'a, button, .service-row, .sample-card, .plan, .manifesto-pill, .why-item, .testi-card, select, textarea, input'
     ));
 
     document.querySelectorAll('.plan').forEach(el => {
@@ -502,17 +502,19 @@
     const testiWrap  = document.querySelector('.testi-scroll');
     if (testiTrack && testiWrap) {
       const totalScroll = testiTrack.scrollWidth - testiWrap.offsetWidth;
-      gsap.to(testiTrack, {
-        x: -totalScroll,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: testiWrap,
-          start: 'top 65%',
-          end: () => `+=${totalScroll}`,
-          scrub: 1.2,
-          pin: false,
-        },
-      });
+      if (totalScroll > 0) {
+        gsap.to(testiTrack, {
+          x: -totalScroll,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: testiWrap,
+            start: 'top 65%',
+            end: () => `+=${totalScroll}`,
+            scrub: 1.2,
+            pin: false,
+          },
+        });
+      }
     }
 
     /* ── Pricing header ─────────────────────────────────────── */
