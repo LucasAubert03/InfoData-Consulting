@@ -9,6 +9,7 @@
 
   /* ── Registrar plugins de GSAP ───────────────────────────── */
   gsap.registerPlugin(ScrollTrigger);
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* Native browser scroll — no hijacking */
 
@@ -196,11 +197,11 @@
   function dismissLoader() {
     if (!loader) return;
     loader.classList.add('loaded');
-    setTimeout(initHero, 100);
+    setTimeout(initHero, reduceMotion ? 0 : 100);
   }
 
   if (loader) {
-    const minWait    = new Promise(r => setTimeout(r, 900));
+    const minWait    = new Promise(r => setTimeout(r, reduceMotion ? 0 : 350));
     const fontLoaded = document.fonts ? document.fonts.ready : Promise.resolve();
     Promise.all([minWait, fontLoaded]).then(dismissLoader);
   } else {
@@ -213,7 +214,7 @@
   ══════════════════════════════════════════════════════════ */
   const dot  = document.getElementById('c-dot');
   const ring = document.getElementById('c-ring');
-  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const canHover = !reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   if (dot && ring && canHover) {
     document.body.classList.add('has-cursor');
@@ -241,7 +242,7 @@
       });
     }
     addHover(document.querySelectorAll(
-      'a, button, .service-row, .sample-card, .plan, .manifesto-pill, .why-item, .testi-card, select, textarea, input'
+      'a, button, .service-row, .sample-card, .plan, .manifesto-pill, .why-item, .testi-card, select, textarea, input, .gallery-img, .process-step'
     ));
 
     document.querySelectorAll('.plan').forEach(el => {
@@ -311,6 +312,7 @@
      7. HERO — animación de entrada (GSAP timeline)
   ══════════════════════════════════════════════════════════ */
   function initHero() {
+    if (reduceMotion) return;
     const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
     tl.from('#hero-eyebrow', { opacity: 0, y: 12, duration: 0.8 });
@@ -337,14 +339,6 @@
       stagger: 0.12,
       duration: 0.75,
     }, '-=0.7');
-
-    tl.from('.hero-stat', {
-      opacity: 0, y: 20,
-      stagger: 0.1,
-      duration: 0.7,
-    }, '-=0.55');
-
-    tl.from('.scroll-indicator', { opacity: 0, duration: 0.8 }, '-=0.4');
 
     /* Fade out hero content as user scrolls down */
     gsap.to('.hero-body', {
@@ -441,6 +435,55 @@
       });
     });
 
+    /* ── Gallery — clip-path image reveal ─────────────────── */
+    gsap.utils.toArray('.img-reveal').forEach((img, i) => {
+      gsap.from(img, {
+        scrollTrigger: { trigger: img, start: 'top 85%', once: true },
+        clipPath: 'inset(100% 0 0 0)',
+        duration: 1.3,
+        delay: i * 0.12,
+        ease: 'power4.out',
+      });
+    });
+
+    /* ── Gallery title ──────────────────────────────────── */
+    const galleryTitle = document.querySelector('.gallery-title');
+    if (galleryTitle) {
+      const words = splitWords(galleryTitle);
+      gsap.from(words, {
+        scrollTrigger: { trigger: galleryTitle, start: 'top 82%', once: true },
+        y: '110%',
+        duration: 1.15,
+        stagger: 0.06,
+        ease: 'power4.out',
+      });
+    }
+
+    /* ── Process — stagger reveal ───────────────────────── */
+    const processTitle = document.querySelector('.process-title');
+    if (processTitle) {
+      const words = splitWords(processTitle);
+      gsap.from(words, {
+        scrollTrigger: { trigger: processTitle, start: 'top 82%', once: true },
+        y: '110%',
+        duration: 1.15,
+        stagger: 0.06,
+        ease: 'power4.out',
+      });
+    }
+
+    gsap.utils.toArray('.process-step').forEach((step, i) => {
+      gsap.from(step, {
+        scrollTrigger: { trigger: step, start: 'top 85%', once: true },
+        y: 48,
+        opacity: 0,
+        scale: 0.96,
+        duration: 1.0,
+        delay: i * 0.15,
+        ease: 'power3.out',
+      });
+    });
+
     /* ── Why — claim ────────────────────────────────────────── */
     const whyClaim = document.querySelector('.why-claim');
     if (whyClaim) {
@@ -516,6 +559,18 @@
         });
       }
     }
+
+    /* ── Testimonial cards — scale-in ─────────────────── */
+    gsap.utils.toArray('.testi-card').forEach((card, i) => {
+      gsap.from(card, {
+        scrollTrigger: { trigger: card, start: 'top 90%', once: true },
+        scale: 0.88,
+        opacity: 0,
+        duration: 0.9,
+        delay: i * 0.08,
+        ease: 'power3.out',
+      });
+    });
 
     /* ── Pricing header ─────────────────────────────────────── */
     const priceHead = document.querySelector('.pricing-headline');
@@ -654,10 +709,6 @@
     });
   }
 
-
-  /* ══════════════════════════════════════════════════════════
-     11. TILT ON SERVICE ROWS — 3D perspective tilt
-  ══════════════════════════════════════════════════════════ */
   function initServiceTilt() {
     document.querySelectorAll('.service-row').forEach(row => {
       row.addEventListener('mousemove', e => {
@@ -756,6 +807,10 @@
 
   form?.addEventListener('submit', e => {
     e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
     const btn = form.querySelector('[type="submit"]');
     btn.disabled = true;
     btn.textContent = 'Enviando…';
@@ -779,7 +834,10 @@
       const target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + window.scrollY - 72,
+        behavior: reduceMotion ? 'auto' : 'smooth',
+      });
     });
   });
 
@@ -793,12 +851,17 @@
 
 
   /* ── Iniciar todo ────────────────────────────────────────── */
-  initMeshGradient();
-  initParticles();
-  initScroll();
-  initMagnetic();
-  initParallax();
-  initServiceTilt();
+  if (!reduceMotion) {
+    initMeshGradient();
+    initParticles();
+    initScroll();
+    initParallax();
+
+    if (canHover) {
+      initMagnetic();
+      initServiceTilt();
+    }
+  }
 
   window.dispatchEvent(new Event('scroll'));
 

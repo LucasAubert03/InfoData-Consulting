@@ -21,12 +21,15 @@
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/components.css" />
+  <link rel="preload" as="image" href="assets/hero-background.png" />
 
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='5' fill='%230C1728'/><text y='23' x='7' font-family='Georgia,serif' font-size='20' font-style='italic' font-weight='600' fill='%23EAF0F7'>i</text></svg>" />
 </head>
 
 <body>
+
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
   <!-- ── Cursor personalizado ─── -->
   <div id="c-dot" aria-hidden="true"></div>
@@ -79,6 +82,8 @@
   </header>
 
 
+  <main id="contenido">
+
   <!-- ══════════════════════════════════════
      HERO — tipografía que llena el viewport
 ══════════════════════════════════════ -->
@@ -91,13 +96,12 @@
         <!-- Eyebrow -->
         <p class="hero-eyebrow" id="hero-eyebrow" aria-hidden="true">
           <span class="hero-eyebrow-dot"></span>
-          InfoData Consulting · América Latina · <span class="js-year">2025</span>
+          <span>InfoData Consulting · LATAM · <span class="js-year">2025</span></span>
         </p>
 
         <!-- Titular principal — GSAP lo anima, sin clases CSS de animación -->
         <div class="hero-headline" aria-label="Tecnología con carácter, para empresas que crecen.">
-          <span class="headline-word">Tecnología</span>
-          <span class="headline-word-serif">con carácter,</span>
+          <span class="headline-word">Tecnología con carácter,</span>
           <span class="headline-word">para empresas</span>
           <span class="headline-word">que crecen.</span>
         </div>
@@ -124,31 +128,8 @@
 
       </div>
 
-      <!-- Stats -->
-      <div class="hero-stats" aria-label="InfoData en números">
-        <div class="hero-stat">
-          <div class="stat-n"><span data-target="50" data-suffix="+">50+</span></div>
-          <div class="stat-d">Clientes activos</div>
-        </div>
-        <div class="hero-stat">
-          <div class="stat-n"><span data-target="120" data-suffix="+">120+</span></div>
-          <div class="stat-d">Proyectos entregados</div>
-        </div>
-        <div class="hero-stat">
-          <div class="stat-n"><span data-target="98" data-suffix="%">98%</span></div>
-          <div class="stat-d">Satisfacción</div>
-        </div>
-        <div class="hero-stat">
-          <div class="stat-n"><span data-target="5" data-suffix="">5</span></div>
-          <div class="stat-d">Países · América Latina</div>
-        </div>
-      </div>
     </div>
 
-    <div class="scroll-indicator" aria-hidden="true">
-      <div class="scroll-line"></div>
-      <span>Scroll</span>
-    </div>
   </section>
 
 
@@ -297,63 +278,97 @@
 
 
   <!-- ══════════════════════════════════════
-     VISUAL SHOWCASE — espacios para imágenes propias
-     Para usar fotos reales, reemplaza cada bloque .sample-media por:
-     <img src="ruta/de-tu-imagen.jpg" alt="Descripción de la imagen" />
+     GALLERY — Nuestro Enfoque
 ══════════════════════════════════════ -->
-  <section class="work-samples" aria-label="Ejemplos visuales de soluciones digitales">
+  <section class="gallery" aria-label="Nuestro enfoque visual">
     <div class="container">
 
-      <div class="work-samples-header">
-        <p class="section-label reveal" style="margin-bottom:1.25rem;">Soluciones</p>
-        <h2 class="work-samples-title">
-          Menos teoría.<br>
-          <em class="serif-accent">Más sistemas</em> funcionando.
-        </h2>
+      <div class="gallery-header">
+        <div>
+          <p class="section-label reveal" style="margin-bottom:1.25rem;">Nuestro enfoque</p>
+          <h2 class="gallery-title">Tecnología que se entiende al verla en acción.</h2>
+        </div>
+        <p class="gallery-intro reveal">
+          Cada solución parte de una conversación, se convierte en un sistema claro y termina
+          con datos que ayudan a decidir mejor.
+        </p>
       </div>
 
-      <div class="sample-grid">
-        <article class="sample-card reveal">
-          <figure class="sample-media sample-media-web" aria-label="Vista conceptual de una página web empresarial">
-            <span class="mock-browser-bar" aria-hidden="true"></span>
-            <span class="mock-line wide" aria-hidden="true"></span>
-            <span class="mock-line" aria-hidden="true"></span>
-            <span class="mock-panel" aria-hidden="true"></span>
-          </figure>
-          <div class="sample-copy">
-            <span>01</span>
-            <h3>Páginas web</h3>
-            <p>Presencia profesional, estructura clara y llamados a la acción visibles.</p>
+      <div class="gallery-grid">
+        <figure class="gallery-img large img-reveal">
+          <img src="assets/team-working.jpg" alt="Profesionales colaborando en un proyecto digital" loading="lazy" />
+          <figcaption class="gallery-img-overlay"><span>Estrategia y trabajo colaborativo</span></figcaption>
+        </figure>
+        <figure class="gallery-img img-reveal">
+          <img src="assets/code-dashboard.jpg" alt="Dashboard digital con métricas de rendimiento" loading="lazy" />
+          <figcaption class="gallery-img-overlay"><span>Datos para decidir mejor</span></figcaption>
+        </figure>
+        <figure class="gallery-img img-reveal">
+          <img src="assets/client-meeting.jpg" alt="Reunión estratégica con cliente" loading="lazy" />
+          <figcaption class="gallery-img-overlay"><span>Acompañamiento cercano</span></figcaption>
+        </figure>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+     PROCESS — Cómo trabajamos
+══════════════════════════════════════ -->
+  <section class="process" aria-label="Nuestro proceso de trabajo">
+    <div class="container">
+
+      <div class="process-header">
+        <div>
+          <p class="section-label reveal" style="margin-bottom:1.25rem;">Proceso</p>
+          <h2 class="process-title">De la idea al lanzamiento, sin perder claridad.</h2>
+        </div>
+        <p class="process-intro reveal">
+          Un recorrido breve y visible para que sepas qué estamos haciendo, por qué y qué sigue.
+        </p>
+      </div>
+
+      <div class="process-steps">
+
+        <article class="process-step">
+          <div class="process-step-img img-reveal">
+            <img src="assets/diagnosis-consult.jpg" alt="Sesión de diagnóstico digital" loading="lazy" />
+          </div>
+          <div class="process-step-body">
+            <span class="process-step-num">Diagnóstico</span>
+            <h3>Escuchamos tu empresa</h3>
+            <p>Analizamos tu situación actual, tus canales y tus objetivos para diseñar un camino claro.</p>
           </div>
         </article>
 
-        <article class="sample-card reveal">
-          <figure class="sample-media sample-media-shop" aria-label="Vista conceptual de una tienda virtual">
-            <span class="mock-product tall" aria-hidden="true"></span>
-            <span class="mock-product" aria-hidden="true"></span>
-            <span class="mock-product" aria-hidden="true"></span>
-            <span class="mock-checkout" aria-hidden="true"></span>
-          </figure>
-          <div class="sample-copy">
-            <span>02</span>
-            <h3>Tiendas virtuales</h3>
-            <p>Catálogo, pagos y pedidos organizados para vender sin fricción.</p>
+        <article class="process-step">
+          <div class="process-step-img img-reveal">
+            <img src="assets/prototype-design.jpg" alt="Diseño y prototipado de solución digital" loading="lazy" />
+          </div>
+          <div class="process-step-body">
+            <span class="process-step-num">Diseño</span>
+            <h3>Construimos tu solución</h3>
+            <p>Creamos el diseño, la estructura y los flujos que mejor se adapten a tu modelo de negocio.</p>
           </div>
         </article>
 
-        <article class="sample-card reveal">
-          <figure class="sample-media sample-media-ai" aria-label="Vista conceptual de automatización con IA">
-            <span class="mock-node main" aria-hidden="true"></span>
-            <span class="mock-node n1" aria-hidden="true"></span>
-            <span class="mock-node n2" aria-hidden="true"></span>
-            <span class="mock-node n3" aria-hidden="true"></span>
-          </figure>
-          <div class="sample-copy">
-            <span>03</span>
-            <h3>Automatizaciones IA</h3>
-            <p>Atención, reportes y tareas internas conectadas en flujos simples.</p>
+        <article class="process-step">
+          <div class="process-step-img img-reveal">
+            <img src="assets/launch-delivery.jpg" alt="Lanzamiento y entrega del proyecto" loading="lazy" />
+          </div>
+          <div class="process-step-body">
+            <span class="process-step-num">Entrega</span>
+            <h3>Lanzamos y acompañamos</h3>
+            <p>Publicamos tu solución, te capacitamos y seguimos optimizando con datos reales.</p>
           </div>
         </article>
+
+      </div>
+
+      <div class="process-footer reveal">
+        <p>¿Ya tienes una idea o un problema concreto?</p>
+        <a href="#contacto" class="btn btn-outline-dark">Cuéntanos tu proyecto</a>
       </div>
 
     </div>
@@ -446,10 +461,7 @@
 
       <div class="pricing-header">
         <p class="section-label reveal" style="margin-bottom:1.25rem;">Planes</p>
-        <h2 class="pricing-headline">
-          Inversión clara,<br>
-          <em>sin sorpresas.</em>
-        </h2>
+        <h2 class="pricing-headline">Inversión clara, sin sorpresas.</h2>
         <p class="pricing-sub reveal">
           * Valores orientativos. Cada propuesta se adapta a tu empresa y objetivos.
         </p>
@@ -628,10 +640,7 @@
     <div class="container">
       <div class="cta-inner">
 
-        <h2 class="cta-headline">
-          ¿Listo para dar el
-          <em>siguiente paso?</em>
-        </h2>
+        <h2 class="cta-headline">¿Listo para dar el siguiente paso?</h2>
 
         <div class="cta-bottom">
           <p class="cta-body">
@@ -661,7 +670,7 @@
     <div class="container">
       <div class="testi-header">
         <p class="section-label" style="margin-bottom:1.5rem;">Testimonios</p>
-        <h2 class="testi-title">Lo que dicen quienes ya <em class="serif-accent">confiaron</em> en nosotros.</h2>
+        <h2 class="testi-title">Lo que dicen quienes ya confiaron en nosotros.</h2>
       </div>
     </div>
     <div class="testi-scroll">
@@ -823,6 +832,8 @@
     </div>
   </section>
 
+  </main>
+
 
   <!-- ══════════════════════════════════════
      FOOTER
@@ -858,7 +869,7 @@
         <div>
           <p class="footer-col-title">Contacto</p>
           <ul class="footer-links">
-            <li><a href="mailto:hola@infodata.com" id="f-email">hola@infodata.com</a></li>
+            <li><a href="mailto:hola@infodata.com" id="footer-email-link">hola@infodata.com</a></li>
             <li><a href="#" id="f-whatsapp">WhatsApp</a></li>
             <li>Lun – Vie · 9–18h (GMT-3)</li>
             <li>América Latina</li>

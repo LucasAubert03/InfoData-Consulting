@@ -5,8 +5,6 @@
    Impacto: tipografía a escala extrema, no efectos
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
-
 /* ── Tokens ─────────────────────────────────────────────────── */
 :root {
   /* Fondos */
@@ -68,6 +66,31 @@ input, button, textarea, select { font: inherit; }
 a { color: inherit; text-decoration: none; }
 ul, ol { list-style: none; }
 
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100000;
+  padding: 0.75rem 1rem;
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transform: translateY(-150%);
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus { transform: translateY(0); }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(29, 75, 137, 0.45);
+  outline-offset: 4px;
+}
+
 /* ── Container ─────────────────────────────────────────────── */
 .container {
   width: 100%;
@@ -94,6 +117,7 @@ ul, ol { list-style: none; }
               border-color var(--t-base) var(--ease-out),
               transform var(--t-base) var(--ease-out);
   white-space: nowrap;
+  min-height: 48px;
 }
 
 .btn-dark {

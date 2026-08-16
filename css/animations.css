@@ -28,6 +28,16 @@
   100% { transform: translate(-50%, -50%) scale(2.4); opacity: 0; }
 }
 
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slide-up-img {
+  from { clip-path: inset(100% 0 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+
 
 /* ══════════════════════════════════════════════════════════════
    PAGE LOADER — thin & minimal
@@ -56,13 +66,13 @@
   font-size: 1rem;
   font-weight: 600;
   color: var(--ink-35);
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 .loader-logo em {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 600;
-  color: var(--green);
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-weight: inherit;
+  color: inherit;
 }
 
 .loader-bar {
@@ -350,9 +360,9 @@ body.has-cursor * { cursor: none !important; }
 }
 
 .testi-title {
-  font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+  font-size: 3.2rem;
   font-weight: 700;
-  letter-spacing: -0.035em;
+  letter-spacing: 0;
   line-height: 1.08;
   color: var(--ink);
 }
@@ -374,7 +384,7 @@ body.has-cursor * { cursor: none !important; }
   flex-shrink: 0;
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 2rem 2rem 1.75rem;
   display: flex;
   flex-direction: column;
@@ -394,10 +404,10 @@ body.has-cursor * { cursor: none !important; }
 }
 
 .testi-card blockquote p {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.05rem;
-  line-height: 1.7;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 1.75;
   color: var(--ink);
 }
 
@@ -441,4 +451,25 @@ body.has-cursor * { cursor: none !important; }
 
 @media (max-width: 768px) {
   .testi-card { width: 85vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  #c-dot,
+  #c-ring,
+  #ambient-particles,
+  #hero-gradient,
+  .scroll-indicator {
+    display: none !important;
+  }
+
+  .img-reveal {
+    clip-path: inset(0) !important;
+  }
 }
